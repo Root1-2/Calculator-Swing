@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.math;
 import java.awt.Font;
 //import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -199,8 +200,13 @@ public class Frame extends JFrame implements ActionListener{
                         numResult = num1 / num2;
                         text.setText(Double.toString(numResult));
                     }
-                }               
-                
+                }  
+                if(e.getSource==btnsqrt){
+                      String str1 = text.getText ();
+                      num1 = Double.parseDouble(str1);
+                      numResult = StrictMath.sqrt(num1);
+                      text.setText(Double.toString(numResult);
+                }
                 if(e.getSource()==btnClr){
                   text.setText("");
                 }
