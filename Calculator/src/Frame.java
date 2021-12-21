@@ -1,6 +1,6 @@
 import java.awt.Color;
-import java.math;
-import java.awt.Font;
+//import java.lang.Math;
+//import java.awt.Font;
 //import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,19 +13,21 @@ import javax.swing.JTextField;
 public class Frame extends JFrame implements ActionListener{
 	JPanel panel1;
 	JTextField text;
-	JButton btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,btnAdd,btnSub,btnMulti,btnDiv,btnEqual,btnClr, btnsqrt, btnsq;
+	JButton btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,btnAdd,btnSub,btnMulti,btnDiv,btnEqual,btnClr, btnsqrt, btnsq, btner;
         int Flag;
         double num1, num2, num3, numResult;
 	Frame()
         {
-                //Font font = new Font("Arial", Font.BOLD,30) ;
+                //Font font = new Font("Arial", Font.BOLD,30);
             
+                //FrameSize
 		setSize(380,500);
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 setLocationRelativeTo(null);
                 setLayout(null);
                 getContentPane().setBackground(Color.BLACK);
                 
+                //Adding panel for TextField
                 panel1 = new JPanel();
                 panel1.setBounds(0, 0, 400,100);
                 panel1.setBackground(Color.BLACK);
@@ -33,10 +35,12 @@ public class Frame extends JFrame implements ActionListener{
                 add(panel1);
                 
                 text = new JTextField();
-                text.setBounds(15, 10, 360, 50);
+                text.setBounds(15, 10, 335, 50);
                 text.setBackground(Color.WHITE);
                 panel1.add(text);
                 
+                
+                //creating objects for each buttons
                 btn1 = new JButton("1");btn1.addActionListener(this);//btn1.setFont(font); 
 		btn2 = new JButton("2");btn2.addActionListener(this);//btn2.setFont(font);
 		btn3 = new JButton("3");btn3.addActionListener(this);//btn3.setFont(font);
@@ -56,7 +60,10 @@ public class Frame extends JFrame implements ActionListener{
 		btnDot = new JButton(".");btnDot.addActionListener(this);//btnDot.setFont(font);
                 btnsqrt = new JButton("\u221A");btnsqrt.addActionListener(this);
                 btnsq = new JButton("\u00B2");btnsq.addActionListener(this);
+                btner = new JButton("<-");btner.addActionListener(this);
                 
+                
+                //setting position of buttons in the frame
                 btn1.setBounds(20,100,50,40);
                 btn2.setBounds(90,100,50,40);
                 btn3.setBounds(160,100,50,40);
@@ -71,6 +78,8 @@ public class Frame extends JFrame implements ActionListener{
                 btnClr.setBounds(160,310,50,40);
                 btnsqrt.setBounds(20, 380, 50, 40);
                 btnsq.setBounds(90, 380, 50, 40);
+                btner.setBounds(160, 380, 50, 40);
+                
                 btnAdd.setBounds(250, 100, 50, 40);
                 btnSub.setBounds(250, 152, 50, 40);
                 btnMulti.setBounds(250, 204, 50, 40);
@@ -78,7 +87,7 @@ public class Frame extends JFrame implements ActionListener{
                 btnDot.setBounds(250, 310, 50, 40);
                 
                 
-                
+                //adding buttons in the frame
                 add(btn1);
 		add(btn2);
 		add(btn3);
@@ -98,115 +107,151 @@ public class Frame extends JFrame implements ActionListener{
                 add(btnAdd);
                 add(btnsqrt);
                 add(btnsq);
+                add(btner);
                 
                 setVisible(true);
 	}
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==btn1){
+	public void actionPerformed(ActionEvent e)         
+        {
+                //Digit Inputs
+		if(e.getSource()==btn1)
+                {
                 text.setText(text.getText()+"1");
                 }
-                if(e.getSource()==btn2){
+                if(e.getSource()==btn2)
+                {
                 text.setText(text.getText()+"2");
                 }
-                if(e.getSource()==btn3){
+                if(e.getSource()==btn3)
+                {
                 text.setText(text.getText()+"3");
                 }
-                if(e.getSource()==btn4){
+                if(e.getSource()==btn4)
+                {
                 text.setText(text.getText()+"4");
                 }
-                if(e.getSource()==btn5){
+                if(e.getSource()==btn5)
+                {
                 text.setText(text.getText()+"5");
                 }
-                if(e.getSource()==btn6){
+                if(e.getSource()==btn6)
+                {
                 text.setText(text.getText()+"6");
                 }
-                if(e.getSource()==btn7){
+                if(e.getSource()==btn7)
+                {
                 text.setText(text.getText()+"7");
                 }
-                if(e.getSource()==btn8){
+                if(e.getSource()==btn8)
+                {
                 text.setText(text.getText()+"8");
                 }
-                if(e.getSource()==btn9){
+                if(e.getSource()==btn9)
+                {
                 text.setText(text.getText()+"9");
                 }
-                if(e.getSource()==btn0){
+                if(e.getSource()==btn0)
+                {
                 text.setText(text.getText()+"0");
                 }
-                if(e.getSource()==btnDot){
+                if(e.getSource()==btnDot)
+                {
                 text.setText(text.getText()+".");
                 }
                 
-                if(e.getSource()==btnAdd){
+                //Operators
+                if(e.getSource()==btnAdd)              
+                {
                     String str1 = text.getText();
                     num1 = Double.parseDouble(str1);
                     text.setText("");
                     Flag=1;
                 }
                 
-                if(e.getSource()==btnSub){
+                if(e.getSource()==btnSub)
+                {
                     String str1 = text.getText();
                     num1 = Double.parseDouble(str1);
                     text.setText("");
                     Flag=2;
                 }
                 
-                if(e.getSource()==btnMulti){
+                if(e.getSource()==btnMulti)
+                {
                     String str1 = text.getText();
                     num1 = Double.parseDouble(str1);
                     text.setText("");
                     Flag=3;
                 }
                 
-                if(e.getSource()==btnDiv){
+                if(e.getSource()==btnDiv)
+                {
                     String str1 = text.getText();
                     num1 = Double.parseDouble(str1);
                     text.setText("");
                     Flag=4;
                 }
                 
-                if(e.getSource()==btnsq){
+                if(e.getSource()==btnsq)
+                {
                         String str1 = text.getText();
                         num1 = Double.parseDouble(str1);
                         numResult = num1*num1;
                         text.setText(Double.toString(numResult));
-                    }
+                }
                 
-                if(e.getSource()==btnEqual){
-                    if(Flag==1){
+                if(e.getSource()==btnsqrt)
+                {
+                      String str1 = text.getText ();
+                      num1 = Double.parseDouble(str1);
+                      numResult = StrictMath.sqrt(num1);
+                      text.setText(Double.toString(numResult));
+                }
+                
+                if(e.getSource()==btnEqual)
+                {
+                    if(Flag==1)
+                    {
                         String str2 = text.getText();
                         num2 = Double.parseDouble(str2);
                         numResult = num1 + num2;
                         text.setText(Double.toString(numResult));
                     }
                     
-                    if(Flag==2){
+                    if(Flag==2)
+                    {
                         String str2 = text.getText();
                         num2 = Double.parseDouble(str2);
                         numResult = num1 - num2;
                         text.setText(Double.toString(numResult));
                     }   
                     
-                    if(Flag==3){
+                    if(Flag==3)
+                    {
                         String str2 = text.getText();
                         num2 = Double.parseDouble(str2);
                         numResult = num1 * num2;
                         text.setText(Double.toString(numResult));
                     }
                     
-                    if(Flag==4){
+                    if(Flag==4)
+                    {
                         String str2 = text.getText();
                         num2 = Double.parseDouble(str2);
                         numResult = num1 / num2;
                         text.setText(Double.toString(numResult));
                     }
-                }  
-                if(e.getSource==btnsqrt){
-                      String str1 = text.getText ();
-                      num1 = Double.parseDouble(str1);
-                      numResult = StrictMath.sqrt(num1);
-                      text.setText(Double.toString(numResult);
                 }
+                
+                if(e.getSource()==btner)
+                {
+                        String str1 = text.getText();
+                        text.setText("");
+                        for(int i=0;i<str1.length()-1;i++)
+                        text.setText(text.getText()+str1.charAt(i));
+                }
+                
                 if(e.getSource()==btnClr){
                   text.setText("");
                 }
